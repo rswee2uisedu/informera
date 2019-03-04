@@ -2,8 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import FeedDataContext from '../FeedDataContext';
-import withFeedData from '../withFeedData';
+import FeedDataContext from '../services/FeedDataContext';
+import withFeedData from '../services/withFeedData';
 
 configure({ adapter: new Adapter });
 

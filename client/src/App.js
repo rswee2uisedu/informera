@@ -3,7 +3,10 @@ import './App.css';
 import sampleUserFeeds from './services/sampleUserFeeds.json';
 import sampleFeedData from './services/sampleFeedData.json';
 import FeedDataContext from './services/FeedDataContext';
-import SampleConsumer from './services/SampleConsumer';
+import FeedList from './components/FeedList';
+import Logo from './components/Logo';
+import Options from './components/Options';
+import SuggestedFeeds from './components/SuggestedFeeds';
 
 class App extends Component {
   state = {
@@ -16,7 +19,18 @@ class App extends Component {
   render() {
     return (
       <FeedDataContext.Provider value={this.state.feeds}>
-        <SampleConsumer />
+        <div className="app componentContainer">
+          <div className="leftColumn componentContainer">
+            left column
+            <FeedList />
+          </div>
+          <div className="rightColumn componentContainer">
+            right column
+            <Logo />
+            <Options />
+            <SuggestedFeeds />
+          </div>
+        </div>
       </FeedDataContext.Provider>
     );
   }
