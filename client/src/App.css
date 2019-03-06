@@ -15,3 +15,38 @@
 .rightColumn {
   width: 25%;
 }
+
+
+/* feed item component */
+
+.feedItemHeading {
+	display: flex;
+	justify-content: space-between;
+}
+
+.feedItemOptions button {
+	width: 40px;
+	height: 40px;
+}
+
+.feedItemPreview {
+  	margin-top: 0;
+}
+
+.feedItemImage {
+  	border: 1px solid black;
+  	margin: 0 auto;
+}
+
+.hamburger {
+    background: url(./options.svg) no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+}
+
+
+
+/* feed item component end */
