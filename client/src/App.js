@@ -1,51 +1,34 @@
-import React, { Component } from 'react';
-import faker from 'faker';
+import React, { useState } from 'react';
+import OptionsContext, { DefaultOptions } from './services/OptionsContext';
 import './App.css';
-import sampleUserFeeds from './services/sampleUserFeeds.json';
-import FeedDataContext from './services/FeedDataContext';
-import FeedList from './components/FeedList';
-import Logo from './components/Logo';
-import Options from './components/Options';
-import SuggestedFeeds from './components/SuggestedFeeds';
+import FeedColumn from './components/FeedColumn';
+import PanelsColumn from './components/PanelsColumn';
 
-const getFakedFeed = () => {
-  return {
-    userFeedId: faker.random.number(),
-    content: faker.lorem.paragraph(),
-    contentSnippet: faker.lorem.sentence(),
-    isoDate: faker.date.recent(),
-    link: faker.internet.url(),
-    pubDate: faker.date.recent(),
-    title: faker.lorem.sentence()
-  };
-};
+const App = (props) => {
 
-class App extends Component {
-  state = {
-    feeds: {
-      userFeeds: sampleUserFeeds.userFeeds,
-      feedData: new Array(10000).fill(null).map(getFakedFeed)
-    }
-  };
+  const [options, setOptions] = useState(DefaultOptions);
 
-  render() {
-    return (
-      <FeedDataContext.Provider value={this.state.feeds}>
-        <div className="app componentContainer">
-          <div className="leftColumn componentContainer">
-            left column
-            <FeedList />
-          </div>
-          <div className="rightColumn componentContainer">
-            right column
-            <Logo />
-            <Options />
-            <SuggestedFeeds />
-          </div>
-        </div>
-      </FeedDataContext.Provider>
-    );
+  const setPanelsAlignment = () => {
+    let newOptions = Object.assign({}, options);
+    newOptions.ui.leftPanel = options.ui.leftPanel ? false : true;
+    setOptions(newOptions);
   }
+
+  const OptionsContextValue = {
+    options: options,
+    set: {
+      leftPanel: setPanelsAlignment,
+    },
+  }
+
+  return (
+    <OptionsContext.Provider value={OptionsContextValue}>
+      <div className="app componentContainer">
+        {options.ui.leftPanel ? <PanelsColumn /> : <FeedColumn />}
+        {options.ui.leftPanel ? <FeedColumn /> : <PanelsColumn />}
+      </div>
+    </OptionsContext.Provider>
+  );
 }
 
 export default App;
