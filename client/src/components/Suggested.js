@@ -1,10 +1,10 @@
 import React from 'react';
 import SuggestedFeed from './SuggestedFeed';
 
-const SuggestedFeeds = () => {
+const Suggested = () => {
 
-    return <div className="componentContainer">
-        <h2>Suggested Feeds</h2>
+    return <div className="componentContainer panel">
+        <h2>Suggested</h2>
         <SuggestedFeed />
         <SuggestedFeed />
         <SuggestedFeed />
@@ -14,4 +14,4 @@ const SuggestedFeeds = () => {
 
 }
 
-export default SuggestedFeeds;
+export default Suggested;

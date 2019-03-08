@@ -8,6 +8,11 @@
   display: flex;
 }
 
+.header {
+  display: block;
+  text-align: center;
+}
+
 .leftColumn {
   width: 75%;
 }

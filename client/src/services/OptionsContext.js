@@ -3,7 +3,7 @@ import React from 'react';
 export const DefaultOptions = {
     ui: {
         leftPanel: false,
-        topHeader: false,
+        showHeader: false,
     },
 };
 

@@ -4,7 +4,7 @@ const SuggestedFeed = () => {
 
     return <div className="componentContainer">
         <button classname='suggestedFeedButton' onClick={() => undefined}>
-            SampleSuggestion
+            Suggested Feed
         </button>
     </div>
 

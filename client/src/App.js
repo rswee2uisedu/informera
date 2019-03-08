@@ -3,26 +3,31 @@ import OptionsContext, { DefaultOptions } from './services/OptionsContext';
 import './App.css';
 import FeedColumn from './components/FeedColumn';
 import PanelsColumn from './components/PanelsColumn';
+import Header from './components/Header';
+import LocalStorage from 'local-storage';
 
 const App = (props) => {
 
-  const [options, setOptions] = useState(DefaultOptions);
+  const [options, setOptions] = useState(LocalStorage.get('storedOptions') || DefaultOptions);
 
-  const setPanelsAlignment = () => {
+  const toggleBooleanOption = (option) => {
     let newOptions = Object.assign({}, options);
-    newOptions.ui.leftPanel = options.ui.leftPanel ? false : true;
+    newOptions.ui[option] = options.ui[option] ? false : true;
     setOptions(newOptions);
+    LocalStorage.set('storedOptions', newOptions);
   }
 
   const OptionsContextValue = {
     options: options,
     set: {
-      leftPanel: setPanelsAlignment,
+      leftPanel: () => toggleBooleanOption('leftPanel'),
+      showHeader: () => toggleBooleanOption('showHeader'),
     },
   }
 
   return (
     <OptionsContext.Provider value={OptionsContextValue}>
+      <Header isShown={options.ui.showHeader} />
       <div className="app componentContainer">
         {options.ui.leftPanel ? <PanelsColumn /> : <FeedColumn />}
         {options.ui.leftPanel ? <FeedColumn /> : <PanelsColumn />}

@@ -1,7 +1,8 @@
 import React from 'react';
 import Logo from './Logo';
 import Options from './Options';
-import SuggestedFeeds from './SuggestedFeeds';
+import Suggested from './Suggested';
+import './PanelsColumn.css';
 
 const PanelsColumn = (props) => {
     return (
@@ -9,7 +10,7 @@ const PanelsColumn = (props) => {
             panels column
             <Logo />
             <Options />
-            <SuggestedFeeds />
+            <Suggested />
         </div>
     );
 }
