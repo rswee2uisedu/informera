@@ -52,6 +52,21 @@
     width: 25px;
 }
 
-
-
 /* feed item component end */
+
+/* suggested feed modal */
+
+.suggestedFeedsModalContainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 400px;
+  overflow-x: auto;
+}
+
+.suggestedFeedsModalItem {
+  margin: 5px;
+  min-width: 200px;
+  cursor: pointer;
+}
+
+/* suggested feed modal end */

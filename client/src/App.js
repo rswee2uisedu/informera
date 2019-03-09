@@ -4,11 +4,12 @@ import './App.css';
 import FeedColumn from './components/FeedColumn';
 import PanelsColumn from './components/PanelsColumn';
 import Header from './components/Header';
+import SuggestedFeedsModal from './components/SuggestedFeedsModal';
 import LocalStorage from 'local-storage';
 
-const App = (props) => {
-
+const App = () => {
   const [options, setOptions] = useState(LocalStorage.get('storedOptions') || DefaultOptions);
+  const [suggestedFeedsModalVisible, setSuggestedFeedsModalVisible] = useState(true);
 
   const toggleBooleanOption = (option) => {
     let newOptions = Object.assign({}, options);
@@ -32,6 +33,7 @@ const App = (props) => {
         {options.ui.leftPanel ? <PanelsColumn /> : <FeedColumn />}
         {options.ui.leftPanel ? <FeedColumn /> : <PanelsColumn />}
       </div>
+      <SuggestedFeedsModal show={suggestedFeedsModalVisible} onHide={() => setSuggestedFeedsModalVisible(false)} />
     </OptionsContext.Provider>
   );
 }
