@@ -71,7 +71,7 @@ const FeedItem = props => {
         <Card.Body>
             <Card.Title>{props.feedItem.title}</Card.Title>
             <Card.Text>
-                <img src={props.feedItem.image} height="100px" />
+                <img src={props.feedItem.image} alt={props.feedItem.title} height="100px" />
             </Card.Text>
         </Card.Body>
     </Card>

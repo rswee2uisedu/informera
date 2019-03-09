@@ -1,13 +1,12 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 const SuggestedFeed = () => {
-
-    return <div className="componentContainer">
-        <button classname='suggestedFeedButton' onClick={() => undefined}>
+    return <div>
+        <Button className="panelButton" size="sm" onClick={() => undefined}>
             Suggested Feed
-        </button>
+        </Button>
     </div>
-
 }
 
 export default SuggestedFeed;

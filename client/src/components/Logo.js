@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Card from 'react-bootstrap/Card';
 import OptionsContext from '../services/OptionsContext';
 
 const Logo = () => {
-
     return (
         <OptionsContext.Consumer>
-            {({options, set}) => (
-                <div className="componentContainer header" 
-                     style={{display: options.ui.showHeader ? "none" : "block"}}
-                >
-                    <h1 className='siteName'>Informera</h1>
-                </div>
-            )}            
+            {({ options, set }) => <Fragment> {
+                !options.ui.showHeader &&
+                <Card className="panelItem">
+                    <Card.Body>
+                        <h2 className='text-truncate siteName'>Informera</h2>
+                    </Card.Body>
+                </Card>
+            }
+            </Fragment>
+            }
+
         </OptionsContext.Consumer>
     );
 }

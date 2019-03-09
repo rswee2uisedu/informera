@@ -4,25 +4,20 @@
   padding: 15px;
 }
 
-.app {
-  display: flex;
-}
-
 .header {
-  display: block;
-  text-align: center;
+  margin: 15px;
 }
 
-.leftColumn {
-  width: 75%;
+.appContainer {
+  margin-top: 15px;
 }
-
-.rightColumn {
-  width: 25%;
-}
-
 
 /* feed item component */
+
+.feedItem {
+  margin: 5px;
+  padding: 5px;
+}
 
 .feedItemHeading {
 	display: flex;
@@ -38,11 +33,6 @@
   	margin-top: 0;
 }
 
-.feedItemImage {
-  	border: 1px solid black;
-  	margin: 0 auto;
-}
-
 .hamburger {
     background: url(./options.svg) no-repeat top left;
     background-size: contain;
@@ -53,6 +43,19 @@
 }
 
 /* feed item component end */
+
+/* panel */
+
+.panelItem {
+  margin-bottom: 15px;
+}
+
+.panelButton {
+  margin-bottom: 5px;
+  white-space: normal;
+}
+
+/* end panel */
 
 /* suggested feed modal */
 

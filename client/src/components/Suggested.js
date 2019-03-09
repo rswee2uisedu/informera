@@ -1,16 +1,20 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 import SuggestedFeed from './SuggestedFeed';
 
 const Suggested = () => {
 
-    return <div className="componentContainer panel">
-        <h2>Suggested</h2>
-        <SuggestedFeed />
-        <SuggestedFeed />
-        <SuggestedFeed />
-        <SuggestedFeed />
-        <input className='feedSearch' type='search' placeholder='Find new feeds!' />
-    </div>
+    return <Card className="panelItem">
+        <Card.Body>
+            <h4 className="text-truncate">Suggested</h4>
+            <SuggestedFeed />
+            <SuggestedFeed />
+            <SuggestedFeed />
+            <SuggestedFeed />
+            <Form.Control type="text" size="sm" placeholder="Find new feeds!" />
+        </Card.Body>
+    </Card>
 
 }
 

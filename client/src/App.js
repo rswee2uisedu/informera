@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import OptionsContext, { DefaultOptions } from './services/OptionsContext';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import './App.css';
 import FeedColumn from './components/FeedColumn';
 import PanelsColumn from './components/PanelsColumn';
@@ -29,10 +31,12 @@ const App = () => {
   return (
     <OptionsContext.Provider value={OptionsContextValue}>
       <Header isShown={options.ui.showHeader} />
-      <div className="app componentContainer">
-        {options.ui.leftPanel ? <PanelsColumn /> : <FeedColumn />}
-        {options.ui.leftPanel ? <FeedColumn /> : <PanelsColumn />}
-      </div>
+      <Container fluid className="appContainer">
+        <Row>
+          {options.ui.leftPanel ? <PanelsColumn /> : <FeedColumn />}
+          {options.ui.leftPanel ? <FeedColumn /> : <PanelsColumn />}
+        </Row>
+      </Container>
       <SuggestedFeedsModal show={suggestedFeedsModalVisible} onHide={() => setSuggestedFeedsModalVisible(false)} />
     </OptionsContext.Provider>
   );
