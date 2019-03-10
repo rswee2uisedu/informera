@@ -73,3 +73,15 @@
 }
 
 /* suggested feed modal end */
+
+/* options modal */
+
+.OptionsModalOptions {
+  display: grid;
+}
+
+.OptionsModalOptions input {
+  margin-right: 5px;
+}
+
+/* option modal end */

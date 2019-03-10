@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import OptionsModal from './OptionsModal';
 import OptionsContext from '../services/OptionsContext';
 
 const Options = () => {
+    const [OptionsModalVisible, setOptionsModalVisible] = useState(false);
+  
     return <OptionsContext.Consumer>
         {({ options, set }) =>
             <Card className="panelItem">
@@ -28,7 +31,8 @@ const Options = () => {
                             />
                         </Form.Group>
                     </Form>
-                    <Button className="panelButton" size="sm" onClick={() => undefined}>More Options</Button>
+                    <Button className="panelButton" size="sm" onClick={() => setOptionsModalVisible(true)}>More Options</Button>
+                    <OptionsModal show={OptionsModalVisible} hide={() => setOptionsModalVisible(false)} />
                 </Card.Body>
             </Card>
         }
