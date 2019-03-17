@@ -1,0 +1,54 @@
+{
+    "userFeeds": [
+        {
+            "id": 1,
+            "name": "RSS Feed 1",
+            "feedType": 1,
+            "feedUrl": "http://rss.cnn.com/rss/cnn_topstories.rss",
+            "status": 1,
+            "feedDataCount": null,
+            "pendingFeedDataCount": null,
+            "lastLoaded": null
+        },
+        {
+            "id": 2,
+            "name": "RSS Feed 2",
+            "feedType": 1,
+            "feedUrl": "http://rss.cnn.com/rss/cnn_world.rss",
+            "status": 2,
+            "feedDataCount": null,
+            "pendingFeedDataCount": null,
+            "lastLoaded": null
+        },
+        {
+            "id": 3,
+            "name": "RSS Feed 3",
+            "feedType": 1,
+            "feedUrl": "http://rss.cnn.com/rss/cnn_us.rss",
+            "status": 3,
+            "feedDataCount": 1,
+            "pendingFeedDataCount": 1,
+            "lastLoaded": 1551148290471
+        },
+        {
+            "id": 4,
+            "name": "RSS Feed 4",
+            "feedType": 1,
+            "feedUrl": "http://rss.cnn.com/rss/money_latest.rss",
+            "status": 4,
+            "feedDataCount": 1,
+            "pendingFeedDataCount": 0,
+            "lastLoaded": 1551148290471
+        },
+        {
+            "id": 5,
+            "name": "RSS Feed 5",
+            "feedType": 1,
+            "feedUrl": "http://rss.cnn.com/rss/cnn_allpolitics.rss",
+            "status": 5,
+            "feedDataCount": null,
+            "pendingFeedDataCount": null,
+            "lastLoaded": null
+        }
+    ]
+}

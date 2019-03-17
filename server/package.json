@@ -1,0 +1,25 @@
+{
+  "name": "informera-server",
+  "version": "1.0.0",
+  "description": "Proxy server for Informera front end.",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rswee2uisedu/informera.git"
+  },
+  "author": "Team 0x0E",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rswee2uisedu/informera/issues"
+  },
+  "homepage": "https://github.com/rswee2uisedu/informera#readme",
+  "devDependencies": {
+    "jest": "^24.1.0"
+  },
+  "dependencies": {
+    "rss-parser": "^3.6.3"
+  }
+}

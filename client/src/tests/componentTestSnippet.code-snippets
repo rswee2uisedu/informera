@@ -1,0 +1,20 @@
+{
+    "componentTestSnippet": {
+        "prefix": "component",
+        "body": [
+            "import React from 'react';",
+            "import { configure, mount } from 'enzyme';",
+            "import Adapter from 'enzyme-adapter-react-16';",
+            "import ${TM_FILENAME_BASE/(.*)\\..+$/$1/} from '../components/${TM_FILENAME_BASE/(.*)\\..+$/$1/}';",
+            "",
+            "configure({ adapter: new Adapter });",
+            "",
+            "describe('${TM_FILENAME_BASE/(.*)\\..+$/$1/} tests.', () => {",
+			"	test('Can successfully mount component.', () => {",
+			"		mount(<${TM_FILENAME_BASE/(.*)\\..+$/$1/} />);",
+			"	});$0",
+            "});"
+        ],
+        "description": "Creates a base test fixture for an Informera component."
+    }
+}
