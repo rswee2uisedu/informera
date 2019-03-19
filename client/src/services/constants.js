@@ -1,11 +1,10 @@
-export const FEED_TYPE = {
+export const FeedType = {
     Rss: 1
 };
 
-export const FEED_STATUS = {
-    PendingLoad: 1,
+export const FeedStatus = {
+    NotLoaded: 1,
     Loading: 2,
-    LoadedWithPending: 3,
-    FullyLoaded: 4,
-    ErrorLoading: 5
+    Complete: 3,
+    Error: 4
 };

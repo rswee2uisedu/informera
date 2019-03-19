@@ -1,16 +1,24 @@
 import React from 'react';
-import faker from 'faker';
+import moment from 'moment';
 import Card from 'react-bootstrap/Card';
 import Dropdown from 'react-bootstrap/Dropdown';
-import 'bootstrap/dist/css/bootstrap.css';
+
+const getFeedText = text => text.length < 500 ? text : text.substring(0, 499) + '...';
 
 const FeedItem = props => <Card className="feedItem">
 	<Card.Title>
 		<div className="float-left feeditemTitle"><h4><a target="_blank" rel="noopener noreferrer" href={props.feedData.link}>{props.feedData.title}</a></h4></div>
 		<div className="float-right feedItemOptions"><FeedItemOptions /></div>
 	</Card.Title>
-	<div className="feedItemPreview"><p>{props.feedData.contentSnippet}</p></div>
-	<div><img src={faker.image.image()} alt="Faked" height="100px" /></div>
+	<div className="feedItemPreview"><p>{getFeedText(props.feedData.contentSnippet)}</p></div>
+	{props.feedData.enclosure &&
+		<div className="feedImageContainer">
+			<img src={props.feedData.enclosure.url} alt={props.feedData.title} className="feedImage" />
+		</div>
+	}
+	{props.feedData.isoDate &&
+		<div>{moment(props.feedData.isoDate).format("dddd, MMMM Do YYYY, h:mm:ss a")}</div>
+	}
 </Card>
 
 const FeedItemOptions = () => <Dropdown>

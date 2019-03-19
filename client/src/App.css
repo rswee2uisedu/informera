@@ -15,6 +15,7 @@
 /* feed item component */
 
 .feedItem {
+  min-height: 230px;
   margin: 5px;
   padding: 5px;
 }
@@ -40,6 +41,15 @@
     display: inline-block;
     height: 25px;
     width: 25px;
+}
+
+.feedImageContainer {
+  height: 300px;  
+}
+
+.feedImage {
+  max-height:100%;
+  max-width: 100%;
 }
 
 /* feed item component end */

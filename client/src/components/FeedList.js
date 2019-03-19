@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { FixedSizeList } from 'react-window';
+import { VariableSizeList } from 'react-window';
 import windowDimensions from 'react-window-dimensions';
 import FeedItem from './FeedItem';
 import withFeedData from '../services/withFeedData';
@@ -9,8 +9,10 @@ const FeedList = props => {
     const { feedData, height } = props;
     const dataToRender = feedData.feedData;
 
+    //console.log(feedData.feedLoadingStatus);
+
     //Not sure best way to calculate this yet...
-    //const getItemHeight = index => dataToRender[index].content.length;
+    const getItemHeight = index => dataToRender[index].enclosure ? 500 : 250;
 
     const row = ({ index, style }) => {
         const item = dataToRender[index];
@@ -22,15 +24,15 @@ const FeedList = props => {
 
     return <Card>
         <Card.Body>
-            <FixedSizeList
+            <VariableSizeList
                 style={{ overflowX: 'hidden' }}
                 height={height}
                 width='100%'
                 itemCount={dataToRender.length}
-                itemSize={250}
+                itemSize={getItemHeight}
             >
                 {row}
-            </FixedSizeList>
+            </VariableSizeList >
         </Card.Body>
     </Card>
 }

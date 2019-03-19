@@ -1,8 +1,8 @@
 import React from 'react';
 
 const FeedDataContext = React.createContext({
-    userFeeds: [],
-    feedData: []
+    feedData: [],
+    feedLoadingStatus: {}
 });
 
 export default FeedDataContext;
