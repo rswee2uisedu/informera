@@ -12,6 +12,8 @@ import LocalStorage from 'local-storage';
 import FeedDataService from './services/FeedDataService';
 
 class App extends Component {
+  feedDataService;
+
   constructor(props) {
     super(props);
 
@@ -31,20 +33,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const feedDataService = new FeedDataService(() => {
+    this.feedDataService = new FeedDataService(() => {
       this.setState({
-        feedData: feedDataService.feedData,
-        feedLoadingStatus: feedDataService.loadingStatus
+        feedData: this.feedDataService.feedData,
+        feedLoadingStatus: this.feedDataService.loadingStatus
       })
     });
-    feedDataService.loadFeedData();
+    this.feedDataService.loadFeedData();
   }
 
   toggleBooleanOption = (option) => {
     const { options } = this.state;
     let newOptions = Object.assign({}, options);
     newOptions.ui[option] = options.ui[option] ? false : true;
-
 
     this.setState({
       options: newOptions
@@ -63,8 +64,14 @@ class App extends Component {
       },
     }
 
+    const feedDataContextValue = {
+      feedData: feedData,
+      feedLoadingStatus: feedLoadingStatus,
+      refreshFeedData: this.feedDataService ? this.feedDataService.loadFeedData : null
+    };
+
     return <OptionsContext.Provider value={optionsContextValue} >
-      <FeedDataContext.Provider value={{ feedData: feedData, feedLoadingStatus: feedLoadingStatus }}>
+      <FeedDataContext.Provider value={feedDataContextValue}>
         <Header isShown={options.ui.showHeader} />
         <Container fluid className="appContainer">
           <Row>
