@@ -1,14 +1,6 @@
 import { FeedStatus } from './constants';
+import UserFeedService from './UserFeedService'
 import moment from 'moment';
-
-//TODO: This will need to be swapped out to call a user feed service or read local storage
-const FEEDS = [
-    'http://rss.cnn.com/rss/cnn_topstories.rss',
-    'http://rss.slashdot.org/Slashdot/slashdotMain',
-    'http://xkcd.com/rss.xml',
-    'https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss',
-    'https://www.unmultimedia.org/photo/rss.jsp'
-];
 
 //TODO: hit azure when in release mode
 const PROXY_URL = 'http://localhost:3001/rss/';
@@ -46,9 +38,9 @@ class FeedDataService {
             this.loadingStatus.feedCompletionPercentage = 0;
             this.feedLoadedCount = 0;
             this.feedErrorCount = 0;
-            this.totalFeedCount = FEEDS.length;
+            this.totalFeedCount = Object.keys(UserFeedService.subscribedFeeds).length;
 
-            await Promise.all(FEEDS.map(async feed => {
+            await Promise.all(Object.keys(UserFeedService.subscribedFeeds).forEach(async feed => {
                 try {
                     const request = await fetch(`${PROXY_URL}${feed}`);
                     const response = await request.json();

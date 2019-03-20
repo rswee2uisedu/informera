@@ -30,6 +30,14 @@ const Options = () => {
                                 checked={options.ui.showHeader}
                             />
                         </Form.Group>
+                        <Form.Group controlId="chkSuggestions">
+                            <Form.Check
+                                type="checkbox"
+                                label="Always Show Suggestions Modal"
+                                onChange={set.alwaysShowSuggestionsModal}
+                                checked={options.ui.alwaysShowSuggestionsModal}
+                            />
+                        </Form.Group>
                     </Form>
                     <Button className="panelButton" size="sm" onClick={() => setOptionsModalVisible(true)}>More Options</Button>
                     <OptionsModal show={OptionsModalVisible} hide={() => setOptionsModalVisible(false)} />

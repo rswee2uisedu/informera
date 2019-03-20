@@ -4,6 +4,7 @@ export const DefaultOptions = {
     ui: {
         leftPanel: false,
         showHeader: false,
+        alwaysShowSuggestionsModal: false,
     },
 };
 

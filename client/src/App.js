@@ -10,6 +10,7 @@ import Header from './components/Header';
 import SuggestedFeedsModal from './components/SuggestedFeedsModal';
 import LocalStorage from 'local-storage';
 import FeedDataService from './services/FeedDataService';
+import UserFeedService from './services/UserFeedService';
 
 class App extends Component {
   feedDataService;
@@ -20,13 +21,18 @@ class App extends Component {
     // Get users stored options
     const storedOptions = LocalStorage.get('storedOptions');
     let userOptions = DefaultOptions;
-    Object.keys(userOptions).map((key) => {
-      if (storedOptions[key]) userOptions[key] = storedOptions[key];
-    });
+    if (storedOptions) {
+      Object.keys(userOptions).forEach((key) => {
+        if (storedOptions[key]) userOptions[key] = storedOptions[key];
+      });
+    }
 
     this.state = {
       options: userOptions,
-      suggestedFeedsModalVisible: true,
+      suggestedFeedsModalVisible: (
+        Object.keys(UserFeedService.subscribedFeeds).length < 1
+        || userOptions.ui.alwaysShowSuggestionsModal
+      ),
       feedData: [],
       feedLoadingStatus: {}
     }
@@ -61,6 +67,7 @@ class App extends Component {
       set: {
         leftPanel: () => this.toggleBooleanOption('leftPanel'),
         showHeader: () => this.toggleBooleanOption('showHeader'),
+        alwaysShowSuggestionsModal: () => this.toggleBooleanOption('alwaysShowSuggestionsModal'),
       },
     }
 

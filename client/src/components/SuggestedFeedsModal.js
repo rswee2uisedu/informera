@@ -3,30 +3,34 @@ import faker from 'faker';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { suggestedFeeds } from '../services/feedSources';
+import UserFeedService from '../services/UserFeedService';
+import withFeedData from '../services/withFeedData';
 
-const getFakedFeed = () => {
-    return {
-        title: faker.lorem.words(),
-        image: faker.image.image()
-    };
-};
-
-const feedItems = new Array(20).fill(null).map(getFakedFeed);
+const feedItems = [];
+Object.keys(suggestedFeeds).forEach(feed => {
+    feedItems.push({
+        title: suggestedFeeds[feed],
+        url: feed,
+        image: faker.image.image(),
+    });
+});
 
 const SuggestedFeedsModal = props => {
     const [selectedFeeds, setSelectedFeeds] = useState([]);
 
     const saveFeeds = onHide => {
         if (selectedFeeds.length) {
-            alert(`Selected feeds to be saved: ${selectedFeeds.join()}`);
+            UserFeedService.addFeeds(selectedFeeds);
+            props.feedData.refreshFeedData();
             onHide();
         }
     }
 
     const selectFeedItem = feedItem => {
-        const existingIndex = selectedFeeds.indexOf(feedItem.title);
+        const existingIndex = selectedFeeds.indexOf(feedItem.url);
         if (existingIndex === -1) {
-            selectedFeeds.push(feedItem.title);
+            selectedFeeds.push(feedItem.url);
             setSelectedFeeds(selectedFeeds);
         } else {
             selectedFeeds.splice(existingIndex, 1);
@@ -71,12 +75,10 @@ const FeedItem = props => {
         <Card.Body>
             <Card.Title>{props.feedItem.title}</Card.Title>
             <Card.Text>
-                <img src={props.feedItem.image} alt={props.feedItem.title} height="100px" />
+                <img src={props.feedItem.image} alt={props.feedItem.title + " image"} height="100px" />
             </Card.Text>
         </Card.Body>
     </Card>
 }
 
-
-
-export default SuggestedFeedsModal;
+export default withFeedData(SuggestedFeedsModal);
