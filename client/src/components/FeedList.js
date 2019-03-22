@@ -1,18 +1,28 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 import { VariableSizeList } from 'react-window';
-import windowDimensions from 'react-window-dimensions';
+import AutoSizer from 'react-virtualized-auto-sizer';
 import FeedItem from './FeedItem';
+import { FeedStatus } from '../services/constants';
 import withFeedData from '../services/withFeedData';
 
 const FeedList = props => {
-    const { feedData, height } = props;
+    const { feedData } = props;
     const dataToRender = feedData.feedData;
 
-    //console.log(feedData.feedLoadingStatus);
+    const getItemHeight = index => {
+        const item = dataToRender[index];
+        let height = 125; //Base height to give room to title
 
-    //Not sure best way to calculate this yet...
-    const getItemHeight = index => dataToRender[index].enclosure ? 500 : 250;
+        if (item.contentSnippet.length) {
+            height += 175; //Room for text
+        }
+
+        if (item.enclosure) {
+            height += 300; //Room for image
+        }
+
+        return height;
+    }
 
     const row = ({ index, style }) => {
         const item = dataToRender[index];
@@ -22,19 +32,24 @@ const FeedList = props => {
         </div>
     };
 
-    return <Card>
-        <Card.Body>
+    //Only render list once loading is complete to ensure heights are calculated correctly
+    if (feedData.feedLoadingStatus.status !== FeedStatus.Complete) {
+        return null;
+    }
+
+    return <AutoSizer>
+        {({ height, width }) =>
             <VariableSizeList
                 style={{ overflowX: 'hidden' }}
                 height={height}
-                width='100%'
+                width={width}
                 itemCount={dataToRender.length}
                 itemSize={getItemHeight}
             >
                 {row}
             </VariableSizeList >
-        </Card.Body>
-    </Card>
+        }
+    </AutoSizer>
 }
 
-export default withFeedData(windowDimensions()(FeedList));
+export default withFeedData(FeedList);

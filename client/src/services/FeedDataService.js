@@ -32,19 +32,32 @@ class FeedDataService {
                 return;
             }
 
+            //console.log(UserFeedService);
+            const feeds = Object.keys(UserFeedService.subscribedFeeds);
+
             //Reset existing values
             this.feedData = [];
             this.loadingStatus.status = FeedStatus.Loading;
             this.loadingStatus.feedCompletionPercentage = 0;
             this.feedLoadedCount = 0;
             this.feedErrorCount = 0;
-            this.totalFeedCount = Object.keys(UserFeedService.subscribedFeeds).length;
+            this.totalFeedCount = feeds.length;
 
-            await Promise.all(Object.keys(UserFeedService.subscribedFeeds).forEach(async feed => {
+            await Promise.all(feeds.map(async feed => {
                 try {
                     const request = await fetch(`${PROXY_URL}${feed}`);
                     const response = await request.json();
-                    this.feedData = this.feedData.concat(response.items);
+
+                    //Filter out items without an iso date and add source title and url to item object
+                    const finalData = response.items
+                        .filter(fi => fi.isoDate)
+                        .map(fi => {
+                            fi.sourceTitle = response.title;
+                            fi.sourceUrl = response.link;
+                            return fi;
+                        })
+
+                    this.feedData = this.feedData.concat(finalData);
                 } catch (e) {
                     console.log(e);
                     this.feedErrorCount++;
@@ -70,7 +83,8 @@ class FeedDataService {
 
             this.updateCallback();
         } catch (e) {
-            console.log(`${e}: did you forget to run proxy server if running locally?`);
+            console.log(e);
+            this.status = FeedStatus.loadingStatus.Error;
         }
     });
 };

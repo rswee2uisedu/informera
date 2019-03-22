@@ -15,7 +15,6 @@
 /* feed item component */
 
 .feedItem {
-  min-height: 230px;
   margin: 5px;
   padding: 5px;
 }
@@ -31,7 +30,8 @@
 }
 
 .feedItemPreview {
-  	margin-top: 0;
+    margin-top: 0;
+    height: 175px;
 }
 
 .hamburger {
