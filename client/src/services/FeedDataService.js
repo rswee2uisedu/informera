@@ -2,8 +2,9 @@ import { FeedStatus } from './constants';
 import UserFeedService from './UserFeedService'
 import moment from 'moment';
 
-//TODO: hit azure when in release mode
-const PROXY_URL = 'http://localhost:3001/rss/';
+//Toggle lines below to hit proxy server running locally
+const PROXY_URL = 'https://informera-proxy.azurewebsites.net?rss=';
+//const PROXY_URL = 'http://localhost:3001?rss=';
 
 class FeedDataService {
     updateCallback;

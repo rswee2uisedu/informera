@@ -1,18 +1,19 @@
 const url = require('url');
+const querystring = require('query-string');
 const rssHandler = require('./rssHandler');
 
 exports.createServer = async (req, res) => {
     try {
-        const parsedUrl = url.parse(req.url);
+        const parsedUrl = querystring.parse(url.parse(req.url).query);
 
         //Handle cors preflight requests
         if (req.method === 'OPTIONS') {
             addCorsHeaders(res);
             res.statusCode = 200;
             res.end();
-        } else if (req.method === 'GET' && parsedUrl.pathname.toLowerCase().startsWith('/rss')) {
+        } else if (req.method === 'GET' && parsedUrl.rss) {
             //Proxy rss requests
-            rssHandler.handleRss(addCorsHeaders(res), parsedUrl);
+            rssHandler.handleRss(addCorsHeaders(res), parsedUrl.rss);
         } else {
             //Any invalid requests return not found
             res.statusCode = 404;

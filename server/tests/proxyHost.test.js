@@ -44,7 +44,7 @@ describe('Proxy server tests.', () => {
     test('Preflight requests return 200, with headers set.', async () => {
         const request = {
             method: 'OPTIONS',
-            url: '/rss'
+            url: '?rss'
         };
 
         await proxyHost.createServer(request, response);
@@ -56,7 +56,7 @@ describe('Proxy server tests.', () => {
     test('Gets with correct route will call into rssHandler.', async () => {
         const request = {
             method: 'GET',
-            url: '/rss'
+            url: '?rss=testUrl'
         };
 
         await proxyHost.createServer(request, response);

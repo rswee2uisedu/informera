@@ -3,9 +3,7 @@ const parser = new Parser();
 
 const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 
-exports.handleRss = async (res, parsedUrl) => {
-    const rssFeedPath = parsedUrl.pathname.substring(5);
-
+exports.handleRss = async (res, rssFeedPath) => {
     if (rssFeedPath && URL_REGEX.test(rssFeedPath)) {
         console.log(`Request received for RSS feed: ${rssFeedPath}`);
 
