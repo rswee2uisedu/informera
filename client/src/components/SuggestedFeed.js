@@ -28,7 +28,7 @@ const SuggestedFeed = (props) => {
     return <Container>
         <Row>
             <Button variant="link" size="sm" onClick={onClick}>
-                <span><b>{getPrefix()}</b></span> <span>{props.name}</span>
+                <span className="suggestedFeedItem"><b>{getPrefix()}</b></span> <span className="suggestedFeedItemName">{props.name}</span>
             </Button>
         </Row>
     </Container>

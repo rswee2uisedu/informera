@@ -7,7 +7,7 @@ import OptionsContext from '../services/OptionsContext';
 
 const Options = () => {
     const [OptionsModalVisible, setOptionsModalVisible] = useState(false);
-  
+
     return <OptionsContext.Consumer>
         {({ options, set }) =>
             <Card className="panelItem">
@@ -16,25 +16,28 @@ const Options = () => {
                     <Form>
                         <Form.Group controlId="chkAlign">
                             <Form.Check
+                                id="chkAlign"
                                 type="checkbox"
                                 label="Left Align Panels"
-                                onChange={set.leftPanel}
+                                onChange={() => set.leftPanel()}
                                 checked={options.ui.leftPanel}
                             />
                         </Form.Group>
                         <Form.Group controlId="chkHeader">
                             <Form.Check
+                                id="chkHeader"
                                 type="checkbox"
                                 label="Show Header"
-                                onChange={set.showHeader}
+                                onChange={() => set.showHeader()}
                                 checked={options.ui.showHeader}
                             />
                         </Form.Group>
                         <Form.Group controlId="chkSuggestions">
                             <Form.Check
+                                id="chkSuggestions"
                                 type="checkbox"
                                 label="Always Show Suggestions Modal"
-                                onChange={set.alwaysShowSuggestionsModal}
+                                onChange={() => set.alwaysShowSuggestionsModal()}
                                 checked={options.ui.alwaysShowSuggestionsModal}
                             />
                         </Form.Group>

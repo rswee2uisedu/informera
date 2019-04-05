@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 const OptionsModal = props => {
   
     return (
-	    <Modal show={props.show} hide={props.hide}>
+	    <Modal show={props.show} onHide={props.hide}>
 	    	<Modal.Header closeButton onClick={props.hide}>
 			    <Modal.Title className="OptionsModalHeader">Options</Modal.Title>
 			  </Modal.Header>

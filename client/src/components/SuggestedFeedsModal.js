@@ -52,8 +52,8 @@ const SuggestedFeedsModal = props => {
             </div>
         </Modal.Body>
         <Modal.Footer>
-            <Button variant="primary" onClick={() => saveFeeds(props.onHide)}>Save</Button>
-            <Button variant="secondary" onClick={props.onHide}>Skip</Button>
+            <Button className="suggestedFeedsModalSaveButton" variant="primary" onClick={() => saveFeeds(props.onHide)}>Save</Button>
+            <Button className="suggestedFeedsModalSkipButton" variant="secondary" onClick={props.onHide}>Skip</Button>
         </Modal.Footer>
     </Modal>
 }

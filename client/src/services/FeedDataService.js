@@ -71,21 +71,21 @@ class FeedDataService {
             }));
 
             //Error condition is if all feeds failed
-            if (this.feedErrorCount !== this.totalFeedCount) {
+            if (this.totalFeedCount === 0 || this.feedErrorCount !== this.totalFeedCount) {
                 this.loadingStatus.status = FeedStatus.Complete;
 
                 //Sort feed items by date desc
                 this.feedData.sort((a, b) => moment(b.isoDate) - moment(a.isoDate));
                 resolve();
             } else {
-                this.status = FeedStatus.loadingStatus.Error;
+                this.status = FeedStatus.Error;
                 reject('Unable to pull feed data.');
             }
 
             this.updateCallback();
         } catch (e) {
             console.log(e);
-            this.status = FeedStatus.loadingStatus.Error;
+            this.status = FeedStatus.Error;
         }
     });
 };

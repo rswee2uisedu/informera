@@ -14,7 +14,7 @@ const FeedItem = props => {
 			</div>
 			<div>
 				{feedDate &&
-					<small>{`${feedDate.format('MMM D, YYYY')} (${feedDate.fromNow()})`}</small>
+					<small className="feedItemDate">{`${feedDate.format('MMM D, YYYY')} (${feedDate.fromNow()})`}</small>
 				}
 				<small> from <a target="_blank" rel="noopener noreferrer" href={props.feedData.sourceUrl}>{props.feedData.sourceTitle}</a></small>
 			</div>
