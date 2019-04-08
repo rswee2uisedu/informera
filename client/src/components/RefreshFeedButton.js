@@ -4,14 +4,15 @@
  */
 
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import withFeedData from '../services/withFeedData';
+import RefreshIcon from './RefreshIcon';
 
-const RefreshFeedButton = props => <Card className="panelItem">
-    <Card.Body>
-        <Button onClick={props.feedData.refreshFeedData}>Refresh Feed Data</Button>
-    </Card.Body>
-</Card>
+const RefreshFeedButton = props =>
+    <Button onClick={props.feedData.refreshFeedData} 
+            variant="link"
+            style={{padding: "0"}}>
+        <RefreshIcon />
+    </Button>
 
 export default withFeedData(RefreshFeedButton);

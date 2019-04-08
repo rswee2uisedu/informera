@@ -19,6 +19,7 @@ const Options = () => {
             <Card className="panelItem">
                 <Card.Body>
                     <h4 className="text-truncate">Options</h4>
+                    <hr />
                     <Form>
                         <Form.Group controlId="chkAlign">
                             <Form.Check
@@ -48,7 +49,13 @@ const Options = () => {
                             />
                         </Form.Group>
                     </Form>
-                    <Button className="panelButton" size="sm" onClick={() => setOptionsModalVisible(true)}>More Options</Button>
+                    <Button className="panelButton" 
+                            size="sm" 
+                            variant="outline-primary"
+                            style={{display: "block", width: "100%"}}
+                            onClick={() => setOptionsModalVisible(true)}>
+                        More Options
+                    </Button>
                     <OptionsModal show={OptionsModalVisible} hide={() => setOptionsModalVisible(false)} />
                 </Card.Body>
             </Card>

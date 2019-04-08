@@ -10,21 +10,19 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import withFeedData from '../services/withFeedData';
 
-const SuggestedFeed = (props) => {
+
+const ManagedFeed = (props) => {
+    const className = props.className ? "managedFeed " + props.className : "managedFeed";
 
     const isInUsersFeeds = () => {
         return props.url in UserFeedService.subscribedFeeds;
-    }
-
-    const getPrefix = () => {
-        return isInUsersFeeds() ? "-" : "+";
     }
 
     const onClick = () => {
         if (isInUsersFeeds()) {
             UserFeedService.removeFeed(props.url);
         } else {
-            UserFeedService.addFeed(props.url);
+            UserFeedService.addFeed(props.url, props.name);
         }
         props.feedData.refreshFeedData();
     }
@@ -32,10 +30,10 @@ const SuggestedFeed = (props) => {
     return <Container>
         <Row>
             <Button variant="link" size="sm" onClick={onClick}>
-                <span className="suggestedFeedItem"><b>{getPrefix()}</b></span> <span className="suggestedFeedItemName">{props.name}</span>
+                <span className={className}>{props.name}</span>
             </Button>
         </Row>
     </Container>
 }
 
-export default withFeedData(SuggestedFeed);
+export default withFeedData(ManagedFeed);

@@ -19,15 +19,15 @@ class UserFeedService {
         }
     }
 
-    addFeed(feed) {
-        this.subscribedFeeds[feed] = true;
+    addFeed(feed, name) {
+        this.subscribedFeeds[feed] = name;
         LocalStorage.set('userFeeds', this.subscribedFeeds);
     }
 
-    addFeeds(feeds = []) {
-        feeds.forEach(feed => {
-            if (!(feed in this.subscribedFeeds)) this.addFeed(feed)
-        });
+    addFeeds(feeds = {}) {
+        for (const [feed, name] of Object.entries(feeds)) {
+            if (!(feed in this.subscribedFeeds)) this.addFeed(feed, name)
+        };
     };
 
     removeFeed(feed) {

@@ -5,18 +5,16 @@
 
 import React from 'react';
 import Col from 'react-bootstrap/Col';
-import Logo from './Logo';
-import RefreshFeedButton from './RefreshFeedButton';
+import HeaderSide from './HeaderSide';
 import Options from './Options';
-import Suggested from './Suggested';
+import ManageFeeds from './ManageFeeds';
 import './PanelsColumn.css';
 
 const PanelsColumn = () => {
     return <Col xs="3">
-        <Logo />
-        <RefreshFeedButton />
+        <HeaderSide />
         <Options />
-        <Suggested />
+        <ManageFeeds />
     </Col>
 }
 

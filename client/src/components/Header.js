@@ -4,16 +4,14 @@
  */
 
 import React, { Fragment } from 'react';
-import Card from 'react-bootstrap/Card';
+import Logo from "./Logo";
 
 const Header = props => {
     return <Fragment>
         {props.isShown &&
-            <Card className="header">
-                <Card.Body>
-                    <h1 className='siteName'>Informera</h1>
-                </Card.Body>
-            </Card>
+            <div className="header">
+                <Logo />
+            </div>
         }
     </Fragment>
 }
