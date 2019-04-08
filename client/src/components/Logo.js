@@ -1,3 +1,8 @@
+/** 
+ * App logo, displayed in header or above options panel
+ * (Requirements 9)                         
+ */
+
 import React, { Fragment } from 'react';
 import Card from 'react-bootstrap/Card';
 import OptionsContext from '../services/OptionsContext';

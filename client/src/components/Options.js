@@ -1,9 +1,15 @@
+/** 
+ * Options panel for common options, button for more options
+ * (Requirements 2.a, 2.b)                         
+ */
+
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import OptionsModal from './OptionsModal';
 import OptionsContext from '../services/OptionsContext';
+
 
 const Options = () => {
     const [OptionsModalVisible, setOptionsModalVisible] = useState(false);

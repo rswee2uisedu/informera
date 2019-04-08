@@ -1,3 +1,10 @@
+/** 
+ * Suggested feed modal for first visit
+ * displays feeds, user can select feeds to start using app
+ * buttons to skip or save selections
+ * (Requirements 1.a,b,c,d)                         
+ */
+
 import React, { useState } from 'react';
 import faker from 'faker';
 import Modal from 'react-bootstrap/Modal';

@@ -1,3 +1,8 @@
+/** 
+ * Feed item component to display feed data - title, date source, preview, and image
+ * (Requirements 8.a,b,c)                         
+ */
+
 import React from 'react';
 import moment from 'moment';
 import Card from 'react-bootstrap/Card';

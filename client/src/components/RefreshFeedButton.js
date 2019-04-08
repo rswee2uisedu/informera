@@ -1,3 +1,8 @@
+/** 
+ * Button to refresh feed data on demand
+ * (Requirement 6.a)                         
+ */
+
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';

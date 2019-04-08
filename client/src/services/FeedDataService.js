@@ -1,3 +1,8 @@
+/** 
+ * handles loading of feed data from proxy server
+ * (Requirements: 1, 3, 6.a, any part of the app using source data)
+ */
+
 import { FeedStatus } from './constants';
 import UserFeedService from './UserFeedService'
 import moment from 'moment';

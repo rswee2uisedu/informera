@@ -1,3 +1,8 @@
+/** 
+ * handles adding and removing feeds for users. reads subcriptions from local storage
+ * (Requirements: 1.d, 2.d, 3.a, 5.a,b)
+ */
+
 import LocalStorage from 'local-storage';
 
 class UserFeedService {

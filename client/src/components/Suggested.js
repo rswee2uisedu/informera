@@ -1,3 +1,8 @@
+/** 
+ * Suggested feed panel, user can manage subscriptions from this panel
+ * (Requirements 4.a, 5.a, 5.b)                         
+ */
+
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';

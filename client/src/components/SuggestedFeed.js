@@ -1,10 +1,14 @@
+/** 
+ * list of feeds for suggested feed panel, subscribe/unsubscribe button for each item
+ * (Requirements 4.a, 5.a, 5.b)                         
+ */
+
 import React from 'react';
 import UserFeedService from '../services/UserFeedService';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import withFeedData from '../services/withFeedData';
-
 
 const SuggestedFeed = (props) => {
 

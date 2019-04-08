@@ -1,3 +1,8 @@
+/** 
+ * Header for app, displays site name
+ * (Requirements 9)                         
+ */
+
 import React, { Fragment } from 'react';
 import Card from 'react-bootstrap/Card';
 

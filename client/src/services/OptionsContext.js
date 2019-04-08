@@ -1,3 +1,8 @@
+/**
+ * set default values for options panel component
+ * (Requirements: 2.a)
+ */
+
 import React from 'react';
 
 export const DefaultOptions = {

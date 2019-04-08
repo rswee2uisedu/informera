@@ -1,10 +1,15 @@
+/** 
+ * Feed list displays feed items in a scrolling list
+ * (Requirements 3.a, 8)                         
+ */
+
 import React from 'react';
 import { VariableSizeList } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import FeedItem from './FeedItem';
 import { FeedStatus } from '../services/constants';
 import withFeedData from '../services/withFeedData';
-
+ 
 const FeedList = props => {
     const { feedData } = props;
     const dataToRender = feedData.feedData;

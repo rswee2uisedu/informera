@@ -1,3 +1,7 @@
+/**
+ * constant values, feed type and feed status for handling status of feed data loading
+ */
+
 export const FeedType = {
     Rss: 1
 };

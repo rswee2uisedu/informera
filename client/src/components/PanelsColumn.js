@@ -1,3 +1,8 @@
+/** 
+ * column for logo, refresh button, options, and suggested feeds panels 
+ * (Requirements 2.a, 4.a, 6.a)                         
+ */
+
 import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Logo from './Logo';
