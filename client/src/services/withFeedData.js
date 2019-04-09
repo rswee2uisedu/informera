@@ -1,8 +1,10 @@
 import React from 'react';
 import FeedDataContext from './FeedDataContext';
 
-const withFeedData = WrappedComponent => props => <FeedDataContext.Consumer>
+const withFeedData = WrappedComponent => props => (
+  <FeedDataContext.Consumer>
     {feedData => <WrappedComponent feedData={feedData} {...props} />}
-</FeedDataContext.Consumer>
+  </FeedDataContext.Consumer>
+);
 
 export default withFeedData;

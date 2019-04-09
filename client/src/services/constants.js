@@ -3,12 +3,12 @@
  */
 
 export const FeedType = {
-    Rss: 1
+  Rss: 1,
 };
 
 export const FeedStatus = {
-    NotLoaded: 1,
-    Loading: 2,
-    Complete: 3,
-    Error: 4
+  NotLoaded: 1,
+  Loading: 2,
+  Complete: 3,
+  Error: 4,
 };

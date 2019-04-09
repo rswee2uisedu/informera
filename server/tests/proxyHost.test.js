@@ -10,57 +10,57 @@ let headers = [];
 console.log = () => {};
 
 describe('Proxy server tests.', () => {
-    beforeEach(() => {
-        jest.clearAllMocks();
+  beforeEach(() => {
+    jest.clearAllMocks();
 
-        headers = [];
-        response = {
-            end: () => {},
-            setHeader: (key, value) => {
-                headers.push(key);
-            }
-        }
-    });
+    headers = [];
+    response = {
+      end: () => {},
+      setHeader: (key, value) => {
+        headers.push(key);
+      },
+    };
+  });
 
-    test('Invalid routes return 404.', async () => {
-        const request = {
-            method: 'GET',
-            url: '/'
-        };
+  test('Invalid routes return 404.', async () => {
+    const request = {
+      method: 'GET',
+      url: '/',
+    };
 
-        await proxyHost.createServer(request, response);
+    await proxyHost.createServer(request, response);
 
-        expect(response.statusCode).toBe(404);
-    });
+    expect(response.statusCode).toBe(404);
+  });
 
-    test('Server errors return 500.', async () => {
-        const request = {};
+  test('Server errors return 500.', async () => {
+    const request = {};
 
-        await proxyHost.createServer(request, response);
+    await proxyHost.createServer(request, response);
 
-        expect(response.statusCode).toBe(500);
-    });
+    expect(response.statusCode).toBe(500);
+  });
 
-    test('Preflight requests return 200, with headers set.', async () => {
-        const request = {
-            method: 'OPTIONS',
-            url: '?rss'
-        };
+  test('Preflight requests return 200, with headers set.', async () => {
+    const request = {
+      method: 'OPTIONS',
+      url: '?rss',
+    };
 
-        await proxyHost.createServer(request, response);
+    await proxyHost.createServer(request, response);
 
-        expect(response.statusCode).toBe(200);
-        expect(headers.length).toBe(4);
-    });
+    expect(response.statusCode).toBe(200);
+    expect(headers.length).toBe(4);
+  });
 
-    test('Gets with correct route will call into rssHandler.', async () => {
-        const request = {
-            method: 'GET',
-            url: '?rss=testUrl'
-        };
+  test('Gets with correct route will call into rssHandler.', async () => {
+    const request = {
+      method: 'GET',
+      url: '?rss=testUrl',
+    };
 
-        await proxyHost.createServer(request, response);
+    await proxyHost.createServer(request, response);
 
-        expect(rssHandler.handleRss).toHaveBeenCalledTimes(1);
-    });
+    expect(rssHandler.handleRss).toHaveBeenCalledTimes(1);
+  });
 });

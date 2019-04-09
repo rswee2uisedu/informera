@@ -1,4 +1,4 @@
-/** 
+/**
  * handles adding and removing feeds for users. reads subcriptions from local storage
  * (Requirements: 1.d, 2.d, 3.a, 5.a,b)
  */
@@ -6,35 +6,33 @@
 import LocalStorage from 'local-storage';
 
 class UserFeedService {
+  constructor() {
+    //Singleton pattern
+    const instance = this.constructor.instance;
+    if (instance) return instance;
+    this.constructor.instance = this;
 
-    constructor() {
-        //Singleton pattern
-        const instance = this.constructor.instance;
-        if (instance) return instance;
-        this.constructor.instance = this;
-
-        this.subscribedFeeds = {};
-        if (LocalStorage.get('userFeeds')) {
-            this.subscribedFeeds = LocalStorage.get('userFeeds');
-        }
+    this.subscribedFeeds = {};
+    if (LocalStorage.get('userFeeds')) {
+      this.subscribedFeeds = LocalStorage.get('userFeeds');
     }
+  }
 
-    addFeed(feed, name) {
-        this.subscribedFeeds[feed] = name;
-        LocalStorage.set('userFeeds', this.subscribedFeeds);
+  addFeed(feed, name) {
+    this.subscribedFeeds[feed] = name;
+    LocalStorage.set('userFeeds', this.subscribedFeeds);
+  }
+
+  addFeeds(feeds = {}) {
+    for (const [feed, name] of Object.entries(feeds)) {
+      if (!(feed in this.subscribedFeeds)) this.addFeed(feed, name);
     }
+  }
 
-    addFeeds(feeds = {}) {
-        for (const [feed, name] of Object.entries(feeds)) {
-            if (!(feed in this.subscribedFeeds)) this.addFeed(feed, name)
-        };
-    };
-
-    removeFeed(feed) {
-        delete this.subscribedFeeds[feed];
-        LocalStorage.set('userFeeds', this.subscribedFeeds);
-    }
-
+  removeFeed(feed) {
+    delete this.subscribedFeeds[feed];
+    LocalStorage.set('userFeeds', this.subscribedFeeds);
+  }
 }
 
 export default new UserFeedService();

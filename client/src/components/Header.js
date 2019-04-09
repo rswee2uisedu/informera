@@ -1,17 +1,13 @@
-/** 
+/**
  * Header for app, displays site name
- * (Requirements 9)                         
+ * (Requirements 9)
  */
 
 import React, { Fragment } from 'react';
-import Logo from "./Logo";
+import Logo from './Logo';
 
 const Header = props => {
-    return <Fragment>
-        {props.isShown &&
-            <Logo />
-        }
-    </Fragment>
-}
+  return <Fragment>{props.isShown && <Logo />}</Fragment>;
+};
 
 export default Header;
