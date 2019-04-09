@@ -1,22 +1,11 @@
-.componentContainer {
-  border: 1px solid #000000;
-  margin: 15px;
-  padding: 15px;
-}
-
 .header {
-  margin: 15px;
-}
-
-.appContainer {
-  margin-top: 15px;
 }
 
 /* feed item component */
 
 .feedItem {
-  margin: 5px;
-  padding: 5px;
+  margin-left: .5em;
+  padding: 1em 1em 0em 1em;
 }
 
 .feedItemHeading {
@@ -48,24 +37,11 @@
 }
 
 .feedImage {
-  max-height:100%;
+  max-height: 100%;
   max-width: 100%;
 }
 
 /* feed item component end */
-
-/* panel */
-
-.panelItem {
-  margin-bottom: 15px;
-}
-
-.panelButton {
-  margin-bottom: 5px;
-  white-space: normal;
-}
-
-/* end panel */
 
 /* suggested feed modal */
 

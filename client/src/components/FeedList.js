@@ -42,10 +42,17 @@ const FeedList = props => {
         return null;
     }
 
+    const style = {
+        overflowX: 'hidden',
+        // Firefox:
+        'scrollbar-color': '#555 #222',
+        'scrollbar-width': 'thin',
+    }
+
     return <AutoSizer>
         {({ height, width }) =>
             <VariableSizeList
-                style={{ overflowX: 'hidden' }}
+                style={style}
                 height={height}
                 width={width}
                 itemCount={dataToRender.length}

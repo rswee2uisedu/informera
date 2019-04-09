@@ -10,13 +10,22 @@ import { FeedStatus } from '../services/constants';
 import FeedList from './FeedList';
 import withFeedData from '../services/withFeedData';                 
 
-const FeedColumn = props => <Col xs="9">
-    {props.feedData.feedLoadingStatus.status === FeedStatus.Loading &&
-        <div className="progressBar">
-            <ProgressBar animated now={props.feedData.feedLoadingStatus.feedCompletionPercentage} />
-        </div>
+const FeedColumn = props => {
+    const style = {
+        margin: "0",
+        padding: "0"
     }
-    <FeedList />
-</Col>
+
+    return <Col style={style}>
+        {props.feedData.feedLoadingStatus.status === FeedStatus.Loading &&
+            <div className="progressBar">
+                <ProgressBar animated now={props.feedData.feedLoadingStatus.feedCompletionPercentage} />
+            </div>
+        }
+        <FeedList />
+    </Col>
+}
+
+
 
 export default withFeedData(FeedColumn);

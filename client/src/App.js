@@ -3,6 +3,7 @@ import OptionsContext, { DefaultOptions } from './services/OptionsContext';
 import FeedDataContext from './services/FeedDataContext';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import './bootstrap.css'
 import './App.css';
 import FeedColumn from './components/FeedColumn';
 import PanelsColumn from './components/PanelsColumn';

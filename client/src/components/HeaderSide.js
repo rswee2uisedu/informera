@@ -7,9 +7,7 @@ const HeaderSide = () => {
         <OptionsContext.Consumer>
             {({ options, set }) => <Fragment> {
                 !options.ui.showHeader &&
-                <div className="panelItem">
-                    <Logo />
-                </div>
+                <Logo />
             }
             </Fragment>
             }

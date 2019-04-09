@@ -90,7 +90,7 @@ class ManageFeeds extends Component {
                     <Button 
                         className='addFeedButton'
                         type='submit' 
-                        variant="outline-primary" 
+                        variant="outline-success" 
                         size="sm"
                         style={{display: "block", width: "100%"}}>
                         Add Feed

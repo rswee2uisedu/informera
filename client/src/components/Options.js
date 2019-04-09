@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import OptionsModal from './OptionsModal';
 import OptionsContext from '../services/OptionsContext';
+import SwitchOption from './SwitchOption';
 
 
 const Options = () => {
@@ -22,27 +23,24 @@ const Options = () => {
                     <hr />
                     <Form>
                         <Form.Group controlId="chkAlign">
-                            <Form.Check
+                            <SwitchOption
                                 id="chkAlign"
-                                type="checkbox"
                                 label="Left Align Panels"
                                 onChange={() => set.leftPanel()}
                                 checked={options.ui.leftPanel}
                             />
                         </Form.Group>
                         <Form.Group controlId="chkHeader">
-                            <Form.Check
+                            <SwitchOption
                                 id="chkHeader"
-                                type="checkbox"
                                 label="Show Header"
                                 onChange={() => set.showHeader()}
                                 checked={options.ui.showHeader}
                             />
                         </Form.Group>
                         <Form.Group controlId="chkSuggestions">
-                            <Form.Check
+                            <SwitchOption
                                 id="chkSuggestions"
-                                type="checkbox"
                                 label="Always Show Suggestions Modal"
                                 onChange={() => set.alwaysShowSuggestionsModal()}
                                 checked={options.ui.alwaysShowSuggestionsModal}
@@ -51,7 +49,7 @@ const Options = () => {
                     </Form>
                     <Button className="panelButton" 
                             size="sm" 
-                            variant="outline-primary"
+                            variant="outline-success"
                             style={{display: "block", width: "100%"}}
                             onClick={() => setOptionsModalVisible(true)}>
                         More Options

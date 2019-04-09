@@ -9,9 +9,7 @@ import Logo from "./Logo";
 const Header = props => {
     return <Fragment>
         {props.isShown &&
-            <div className="header">
-                <Logo />
-            </div>
+            <Logo />
         }
     </Fragment>
 }

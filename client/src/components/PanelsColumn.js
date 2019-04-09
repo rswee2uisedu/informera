@@ -4,18 +4,22 @@
  */
 
 import React from 'react';
-import Col from 'react-bootstrap/Col';
 import HeaderSide from './HeaderSide';
 import Options from './Options';
 import ManageFeeds from './ManageFeeds';
 import './PanelsColumn.css';
 
 const PanelsColumn = () => {
-    return <Col xs="3">
+    const style = {
+        "display": "block",
+        "width": "20em",
+    }
+
+    return <div style={style}>
         <HeaderSide />
         <Options />
         <ManageFeeds />
-    </Col>
+    </div>
 }
 
 export default PanelsColumn;
