@@ -6,6 +6,7 @@ import ManagedFeed from './ManagedFeed';
 import { suggestedFeeds } from '../services/feedSources';
 import UserFeedService from '../services/UserFeedService';
 import FeedDataContext from '../services/FeedDataContext';
+import { MaxPanelFeeds } from '../services/constants';
 
 class ManageFeeds extends Component {
   constructor(props) {
@@ -45,6 +46,9 @@ class ManageFeeds extends Component {
   render() {
     const subscribedFeedEntries = [];
     for (const [url, name] of Object.entries(UserFeedService.subscribedFeeds)) {
+      if (subscribedFeedEntries.length >= MaxPanelFeeds) {
+        break;
+      }
       subscribedFeedEntries.push(
         <ManagedFeed
           key={url}
@@ -57,6 +61,9 @@ class ManageFeeds extends Component {
 
     const suggestedFeedEntries = [];
     for (const [url, name] of Object.entries(suggestedFeeds)) {
+      if (suggestedFeedEntries.length >= MaxPanelFeeds) {
+        break;
+      }
       if (!(url in UserFeedService.subscribedFeeds)) {
         suggestedFeedEntries.push(
           <ManagedFeed
@@ -76,6 +83,9 @@ class ManageFeeds extends Component {
           <hr />
           <h6>Suggested Feeds</h6>
           {suggestedFeedEntries}
+          <hr />
+          <h6>Remove Feeds</h6>
+          {subscribedFeedEntries}
           <hr />
           <Form
             className="addFeedForm"
@@ -107,19 +117,29 @@ class ManageFeeds extends Component {
                 placeholder="Feed URL"
               />
             </Form.Group>
-            <Button
-              className="addFeedButton"
-              type="submit"
-              variant="outline-success"
-              size="sm"
-              style={{ display: 'block', width: '100%' }}
-            >
-              Add Feed
-            </Button>
+            <Form.Group>
+              <Button
+                className="addFeedButton"
+                type="submit"
+                variant="primary"
+                size="sm"
+                style={{ display: 'block', width: '100%' }}
+              >
+                Add Feed
+              </Button>
+            </Form.Group>
+            <Form.Group>
+              <Button
+                className="manageFeedsButton"
+                variant="primary"
+                size="sm"
+                style={{ display: 'block', width: '100%' }}
+                onClick={() => alert('TODO: Open manage feeds modal')}
+              >
+                Manage All Feeds
+              </Button>
+            </Form.Group>
           </Form>
-          <hr />
-          <h6>Remove Feeds</h6>
-          {subscribedFeedEntries}
         </Card.Body>
       </Card>
     );

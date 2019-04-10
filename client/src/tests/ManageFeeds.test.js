@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import ManageFeeds from '../components/ManageFeeds';
 import { suggestedFeeds } from '../services/feedSources';
 import UserFeedService from '../services/UserFeedService';
+import { MaxPanelFeeds } from '../services/constants';
 
 configure({ adapter: new Adapter() });
 
@@ -18,11 +19,14 @@ describe('ManageFeeds tests.', () => {
 
   test('Correct number of feeds listed under Remove Feeds', () => {
     const manageFeeds = mount(<ManageFeeds />);
-    const subscribedFeedsCount = Object.keys(UserFeedService.subscribedFeeds)
+    let subscribedFeedsCount = Object.keys(UserFeedService.subscribedFeeds)
       .length;
     const removeFeedsItemCount = manageFeeds
       .find('.subscribedFeedItem')
       .hostNodes().length;
+    if (subscribedFeedsCount > MaxPanelFeeds) {
+      subscribedFeedsCount = MaxPanelFeeds;
+    }
 
     expect(subscribedFeedsCount).toEqual(removeFeedsItemCount);
   });
@@ -32,10 +36,13 @@ describe('ManageFeeds tests.', () => {
     const suggestionsDisplayedCount = manageFeeds
       .find('.suggestedFeedItem')
       .hostNodes().length;
-    let suggestedFeedsCount = Object.keys(suggestedFeeds).length;
+    let suggestedFeedsCount = 0;
     for (var key in suggestedFeeds) {
-      if (key in UserFeedService.subscribedFeeds) {
-        suggestedFeedsCount--;
+      if (!(key in UserFeedService.subscribedFeeds)) {
+        suggestedFeedsCount++;
+      }
+      if (suggestedFeedsCount >= MaxPanelFeeds) {
+        break;
       }
     }
 

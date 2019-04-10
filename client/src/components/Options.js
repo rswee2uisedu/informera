@@ -50,7 +50,7 @@ const Options = () => {
             <Button
               className="panelButton"
               size="sm"
-              variant="outline-success"
+              variant="primary"
               style={{ display: 'block', width: '100%' }}
               onClick={() => setOptionsModalVisible(true)}
             >

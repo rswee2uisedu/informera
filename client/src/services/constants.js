@@ -12,3 +12,5 @@ export const FeedStatus = {
   Complete: 3,
   Error: 4,
 };
+
+export const MaxPanelFeeds = 5;
