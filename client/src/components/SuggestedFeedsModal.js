@@ -28,16 +28,22 @@ const SuggestedFeedsModal = props => {
 
   const saveFeeds = onHide => {
     if (selectedFeeds.length) {
-      UserFeedService.addFeeds(selectedFeeds);
+      const feedData = {};
+      selectedFeeds.forEach(sf => {
+        feedData[sf.url] = sf.title;
+      });
+      UserFeedService.addFeeds(feedData);
       props.feedData.refreshFeedData();
       onHide();
     }
   };
 
   const selectFeedItem = feedItem => {
-    const existingIndex = selectedFeeds.indexOf(feedItem.url);
+    const existingIndex = selectedFeeds.findIndex(
+      sf => sf.url === feedItem.url
+    );
     if (existingIndex === -1) {
-      selectedFeeds.push(feedItem.url);
+      selectedFeeds.push(feedItem);
       setSelectedFeeds(selectedFeeds);
     } else {
       selectedFeeds.splice(existingIndex, 1);
