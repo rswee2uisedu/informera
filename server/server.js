@@ -2,6 +2,7 @@ const http = require('http');
 const proxyHost = require('./proxyHost');
 const port = process.env.PORT || 3001;
 
+//Start server
 const server = http.createServer(proxyHost.createServer);
 
 server.listen(port, () => {

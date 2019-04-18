@@ -14,6 +14,9 @@ const FeedList = props => {
   const { feedData } = props;
   const dataToRender = feedData.feedData;
 
+  //Calculate the height for an individual item
+  //Strategy is to always give at least 125px for title
+  //from there add extra px if there is content and then if there is an image
   const getItemHeight = index => {
     const item = dataToRender[index];
     let height = 125; //Base height to give room to title
@@ -29,6 +32,7 @@ const FeedList = props => {
     return height;
   };
 
+  //Individual row renderer
   const row = ({ index, style }) => {
     const item = dataToRender[index];
 

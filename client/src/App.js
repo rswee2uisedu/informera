@@ -28,6 +28,8 @@ class App extends Component {
       });
     }
 
+    //Set initial application state
+    //Options loaded from local storage, feed data not yet loaded
     this.state = {
       options: userOptions,
       suggestedFeedsModalVisible:
@@ -38,6 +40,7 @@ class App extends Component {
     };
   }
 
+  //Set up feed loading service, sending in callback that will update application state whenever feed data changes
   componentDidMount() {
     this.feedDataService = new FeedDataService(() => {
       this.setState({
@@ -48,6 +51,8 @@ class App extends Component {
     this.feedDataService.loadFeedData();
   }
 
+  //Handle user changing a checkbox option, sets value on option object
+  //and updates application state and local storage
   toggleBooleanOption = option => {
     const { options } = this.state;
     let newOptions = Object.assign({}, options);
@@ -60,6 +65,7 @@ class App extends Component {
   };
 
   render() {
+    //Deconstruct state for use
     const {
       options,
       suggestedFeedsModalVisible,
@@ -67,6 +73,7 @@ class App extends Component {
       feedLoadingStatus,
     } = this.state;
 
+    //Set up options context to be passed down component tree
     const optionsContextValue = {
       options: this.state.options,
       set: {
@@ -77,6 +84,7 @@ class App extends Component {
       },
     };
 
+    //Set up feed data context to be passed down component tree
     const feedDataContextValue = {
       feedData: feedData,
       feedLoadingStatus: feedLoadingStatus,

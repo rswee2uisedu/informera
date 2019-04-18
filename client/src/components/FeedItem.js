@@ -7,6 +7,7 @@ import React from 'react';
 import moment from 'moment';
 import Card from 'react-bootstrap/Card';
 
+//Trim content to max of 500 characters
 const getFeedText = text =>
   text.length < 500 ? text : text.substring(0, 499) + '...';
 
