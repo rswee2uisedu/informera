@@ -81,6 +81,9 @@ class App extends Component {
         showHeader: () => this.toggleBooleanOption('showHeader'),
         alwaysShowSuggestionsModal: () =>
           this.toggleBooleanOption('alwaysShowSuggestionsModal'),
+        showSuggestedFeeds: () =>
+          this.toggleBooleanOption('showSuggestedFeeds'),
+        showRemoveFeeds: () => this.toggleBooleanOption('showRemoveFeeds'),
       },
     };
 

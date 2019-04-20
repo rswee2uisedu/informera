@@ -46,6 +46,22 @@ const Options = () => {
                   checked={options.ui.alwaysShowSuggestionsModal}
                 />
               </Form.Group>
+              <Form.Group controlId="chkSuggestedFeeds">
+                <SwitchOption
+                  id="chkSuggestedFeeds"
+                  label="Show Suggested Feeds"
+                  onChange={() => set.showSuggestedFeeds()}
+                  checked={options.ui.showSuggestedFeeds}
+                />
+              </Form.Group>
+              <Form.Group controlId="chkRemoveFeeds">
+                <SwitchOption
+                  id="chkRemoveFeeds"
+                  label="Show Remove Feeds"
+                  onChange={() => set.showRemoveFeeds()}
+                  checked={options.ui.showRemoveFeeds}
+                />
+              </Form.Group>
             </Form>
             <Button
               className="panelButton"

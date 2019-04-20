@@ -6,10 +6,10 @@
 import { FeedStatus } from './constants';
 import UserFeedService from './UserFeedService';
 import moment from 'moment';
+import Config from '../config';
 
-//Toggle lines below to hit proxy server running locally
-const PROXY_URL = 'https://informera-proxy.azurewebsites.net?rss=';
-//const PROXY_URL = 'http://localhost:3001?rss=';
+// Set address to the RSS proxy server
+const PROXY_URL = Config.RSSProxyAddress || 'http://localhost:3001?rss=';
 
 class FeedDataService {
   updateCallback;

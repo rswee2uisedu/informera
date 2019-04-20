@@ -1,3 +1,7 @@
+/**
+ * Nav hidden Header, displays site name
+ * (Requirements 9)
+ */
 import React, { Fragment } from 'react';
 import OptionsContext from '../services/OptionsContext';
 import Logo from './Logo.js';

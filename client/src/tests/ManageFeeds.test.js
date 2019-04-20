@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import ManageFeeds from '../components/ManageFeeds';
 import { suggestedFeeds } from '../services/feedSources';
 import UserFeedService from '../services/UserFeedService';
-import { MaxPanelFeeds } from '../services/constants';
+import Config from '../config';
 
 configure({ adapter: new Adapter() });
 
@@ -24,8 +24,8 @@ describe('ManageFeeds tests.', () => {
     const removeFeedsItemCount = manageFeeds
       .find('.subscribedFeedItem')
       .hostNodes().length;
-    if (subscribedFeedsCount > MaxPanelFeeds) {
-      subscribedFeedsCount = MaxPanelFeeds;
+    if (subscribedFeedsCount > Config.MaxRemovePanelFeeds) {
+      subscribedFeedsCount = Config.MaxRemovePanelFeeds;
     }
 
     expect(subscribedFeedsCount).toEqual(removeFeedsItemCount);
@@ -41,7 +41,7 @@ describe('ManageFeeds tests.', () => {
       if (!(key in UserFeedService.subscribedFeeds)) {
         suggestedFeedsCount++;
       }
-      if (suggestedFeedsCount >= MaxPanelFeeds) {
+      if (suggestedFeedsCount >= Config.MaxSuggestedPanelFeeds) {
         break;
       }
     }

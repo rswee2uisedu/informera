@@ -1,3 +1,7 @@
+/**
+ * Boolean input type option component.
+ */
+
 import React from 'react';
 
 const SwitchOption = props => {

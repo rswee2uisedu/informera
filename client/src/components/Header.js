@@ -1,5 +1,5 @@
 /**
- * Header for app, displays site name
+ * Nav shown Header, displays site name
  * (Requirements 9)
  */
 

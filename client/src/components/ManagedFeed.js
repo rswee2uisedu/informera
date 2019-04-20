@@ -1,5 +1,6 @@
 /**
- * list of feeds for suggested feed panel, subscribe/unsubscribe button for each item
+ * Individual feed component for ManageFeeds panel,
+ * acts as subscribe/unsubscribe button for each item
  * (Requirements 4.a, 5.a, 5.b)
  */
 
@@ -11,14 +12,17 @@ import Container from 'react-bootstrap/Container';
 import withFeedData from '../services/withFeedData';
 
 const ManagedFeed = props => {
+  // Append managedFeed class to html element class list.
   const className = props.className
     ? 'managedFeed ' + props.className
     : 'managedFeed';
 
+  // Check if the feed is currently subscribed to or not
   const isInUsersFeeds = () => {
     return props.url in UserFeedService.subscribedFeeds;
   };
 
+  // Defines the onClick event handler
   const onClick = () => {
     if (isInUsersFeeds()) {
       UserFeedService.removeFeed(props.url);

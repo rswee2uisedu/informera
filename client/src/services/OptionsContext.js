@@ -10,6 +10,8 @@ export const DefaultOptions = {
     leftPanel: false,
     showHeader: false,
     alwaysShowSuggestionsModal: false,
+    showSuggestedFeeds: true,
+    showRemoveFeeds: false,
   },
 };
 

@@ -7,12 +7,12 @@ import React from 'react';
 import HeaderSide from './HeaderSide';
 import Options from './Options';
 import ManageFeeds from './ManageFeeds';
-import './PanelsColumn.css';
 
 const PanelsColumn = () => {
   const style = {
     display: 'block',
     width: '20em',
+    height: '100vh',
   };
 
   return (
