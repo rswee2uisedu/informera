@@ -10,6 +10,7 @@ import FeedItem from './FeedItem';
 import { FeedStatus } from '../services/constants';
 import withFeedData from '../services/withFeedData';
 
+
 const FeedList = props => {
   const { feedData } = props;
   const dataToRender = feedData.feedData;

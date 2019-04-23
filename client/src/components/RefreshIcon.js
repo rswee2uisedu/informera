@@ -1,10 +1,11 @@
-import React from 'react';
-
 /**
  * https://www.materialui.co/icon/refresh
  *
  * Refresh SVG path data for refresh button.
  */
+
+ import React from 'react';
+
 const RefreshIcon = () => {
   return (
     <svg

@@ -12,6 +12,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
+### Feed Data
+
+This app does not pull data from RSS feeds directly, it requires the proxy server in the /server directory.<br>
+The proxy server must be running for the app to receive RSS feed data.<br>
+The address of the server is set in client/src/services/FeedDataService.js. Use<br>
+```javascript
+const PROXY_URL = 'http://localhost:3001/rss/'
+``` 
+for development. This value will need to be updated for production.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
