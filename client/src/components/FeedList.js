@@ -10,7 +10,6 @@ import FeedItem from './FeedItem';
 import { FeedStatus } from '../services/constants';
 import withFeedData from '../services/withFeedData';
 
-
 const FeedList = props => {
   const { feedData } = props;
   const dataToRender = feedData.feedData;
@@ -23,7 +22,7 @@ const FeedList = props => {
     let height = 125; //Base height to give room to title
 
     if (item.contentSnippet.length) {
-      height += 175; //Room for text
+      height += 75; //Room for text
     }
 
     if (item.enclosure) {
@@ -49,18 +48,11 @@ const FeedList = props => {
     return null;
   }
 
-  const style = {
-    overflowX: 'hidden',
-    // Firefox:
-    'scrollbar-color': '#555 #222',
-    'scrollbar-width': 'thin',
-  };
-
   return (
     <AutoSizer>
       {({ height, width }) => (
         <VariableSizeList
-          style={style}
+          className="feedList scrollbars"
           height={height}
           width={width}
           itemCount={dataToRender.length}

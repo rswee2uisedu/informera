@@ -6,7 +6,6 @@
  */
 
 import React, { useState } from 'react';
-import faker from 'faker';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -19,7 +18,6 @@ Object.keys(suggestedFeeds).forEach(feed => {
   feedItems.push({
     title: suggestedFeeds[feed],
     url: feed,
-    image: faker.image.image(),
   });
 });
 
@@ -51,13 +49,20 @@ const SuggestedFeedsModal = props => {
     }
   };
 
+  const style = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    maxHeight: '425px',
+    overflowX: 'auto',
+  };
+
   return (
     <Modal show={props.show} centered size="lg" onHide={props.onHide}>
       <Modal.Header>
         <Modal.Title>Choose some feeds to get started</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div className="suggestedFeedsModalContainer">
+        <div className="suggestedFeedsModalContainer scrollbars" style={style}>
           {feedItems.map(fi => (
             <FeedItem
               key={fi.title}
@@ -95,9 +100,20 @@ const FeedItem = props => {
     props.onFeedSelected(props.feedItem);
   };
 
+  const style = {
+    display: 'block',
+    margin: '5px',
+    minWidth: '11.75em',
+    maxWidth: '11.75em',
+    width: '11.75em',
+    paddingBottom: '4em',
+    cursor: 'pointer',
+  };
+
   return (
     <Card
       className="suggestedFeedsModalItem"
+      style={style}
       bg={selected ? 'secondary' : ''}
       onClick={selectFeed}
     >

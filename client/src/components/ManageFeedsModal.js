@@ -1,7 +1,7 @@
 /**
- * manage feeds modal
+ * Suggested feed modal for first visit and managing subscriptions
  * displays subscribed feeds and available feeds
- * (Requirements )
+ * (Requirements 1,1.a,b,c)
  */
 
 import React from 'react';
@@ -12,7 +12,7 @@ import ManagedFeed from './ManagedFeed';
 import { suggestedFeeds } from '../services/feedSources';
 import UserFeedService from '../services/UserFeedService';
 
-const ManagedFeedsModal = props => {
+const ManageFeedsModal = props => {
   // get all available feeds as ManagedFeed
   const allFeeds = [];
 
@@ -32,24 +32,30 @@ const ManagedFeedsModal = props => {
     return UserFeedService.isSubscribed(value) === false;
   });
 
+  const style = {
+    height: '33vh',
+    'overflow-y': 'auto',
+  };
+
   return (
-    <Modal show={props.show} centered size="lg" onHide={props.hide}>
+    <Modal show={props.show} centered size="lg" onHide={props.onHide}>
       <Modal.Header>
-        <Modal.Title className="managedFeedsModal">Manage Feeds</Modal.Title>
+        <Modal.Title>Manage Feeds</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <Row>
-          <Col md={6} lg={6}>
+      <Row className="manageFeedsContainer">
+        <Col md={6} lg={6}>
+          <Modal.Body style={style} className="scrollbars">
             <h5>Suggested Feeds</h5>
             {available}
-          </Col>
-
-          <Col md={6} lg={6}>
+          </Modal.Body>
+        </Col>
+        <Col md={6} lg={6}>
+          <Modal.Body style={style} className="scrollbars">
             <h5>Subscribed Feeds</h5>
             {subscribed}
-          </Col>
-        </Row>
-      </Modal.Body>
+          </Modal.Body>
+        </Col>
+      </Row>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.hide}>
           Close
@@ -59,4 +65,4 @@ const ManagedFeedsModal = props => {
   );
 };
 
-export default ManagedFeedsModal;
+export default ManageFeedsModal;

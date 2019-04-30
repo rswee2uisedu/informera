@@ -1,39 +1,47 @@
-.header {
+/* Scrollbars for Firefox */
+.scrollbars {
+  scrollbar-color: #555 #222 !important;
+  scrollbar-width: thin !important;
+}
+
+/* Scrollbars for Chrome */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-button {
+  width: 8px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #222;
+  border: thin solid 111;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border: thin solid #555;
+  border-radius: 10px;
 }
 
 /* feed item component */
 
 .feedItem {
-  margin-left: .5em;
+  margin-left: 0.5em;
   padding: 1em 1em 0em 1em;
 }
 
 .feedItemHeading {
-	display: flex;
-	justify-content: space-between;
-}
-
-.feedItemOptions button {
-	width: 40px;
-	height: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .feedItemPreview {
-    margin-top: 0;
-    height: 175px;
-}
-
-.hamburger {
-    background: url(./options.svg) no-repeat top left;
-    background-size: contain;
-    cursor: pointer;
-    display: inline-block;
-    height: 25px;
-    width: 25px;
+  margin-top: 0;
+  height: 75px;
 }
 
 .feedImageContainer {
-  height: 300px;  
+  height: 300px;
 }
 
 .feedImage {
@@ -42,32 +50,3 @@
 }
 
 /* feed item component end */
-
-/* suggested feed modal */
-
-.suggestedFeedsModalContainer {
-  display: flex;
-  flex-wrap: wrap;
-  max-height: 400px;
-  overflow-x: auto;
-}
-
-.suggestedFeedsModalItem {
-  margin: 5px;
-  min-width: 200px;
-  cursor: pointer;
-}
-
-/* suggested feed modal end */
-
-/* options modal */
-
-.OptionsModalOptions {
-  display: grid;
-}
-
-.OptionsModalOptions input {
-  margin-right: 5px;
-}
-
-/* option modal end */

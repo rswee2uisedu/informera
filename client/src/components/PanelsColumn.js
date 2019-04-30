@@ -13,10 +13,12 @@ const PanelsColumn = () => {
     display: 'block',
     width: '20em',
     height: '100vh',
+    maxHeight: '100vh',
+    overflowY: 'auto',
   };
 
   return (
-    <div style={style}>
+    <div style={style} className="scrollbars">
       <HeaderSide />
       <Options />
       <ManageFeeds />

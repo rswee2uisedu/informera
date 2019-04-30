@@ -7,9 +7,9 @@ import React from 'react';
 import moment from 'moment';
 import Card from 'react-bootstrap/Card';
 
-//Trim content to max of 500 characters
+//Trim content to max of 280 characters
 const getFeedText = text =>
-  text.length < 500 ? text : text.substring(0, 499) + '...';
+  text.length < 280 ? text : text.substring(0, 279) + '...';
 
 const FeedItem = props => {
   const feedDate = moment(props.feedData.isoDate);
