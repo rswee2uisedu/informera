@@ -4,6 +4,11 @@
   scrollbar-width: thin !important;
 }
 
+/* Reduce h1 font size so logo doesn't wrap in Edge */
+h1 {
+  font-size: 3em;
+}
+
 /* Scrollbars for Chrome */
 ::-webkit-scrollbar {
   width: 8px;
