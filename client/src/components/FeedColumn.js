@@ -26,7 +26,7 @@ const FeedColumn = props => {
           />
         </div>
       )}
-      <FeedList />
+      <FeedList height={props.height} />
     </Col>
   );
 };

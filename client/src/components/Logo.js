@@ -6,8 +6,16 @@ import React from 'react';
 import RefreshFeedButton from './RefreshFeedButton';
 
 const Logo = props => {
+  const style = {
+    width: props.width,
+    height: '6em',
+  };
+
   return (
-    <nav className="header panelItem navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav
+      className="header panelItem navbar navbar-expand-lg navbar-dark bg-primary"
+      style={style}
+    >
       <h1>
         Informera <RefreshFeedButton />
       </h1>

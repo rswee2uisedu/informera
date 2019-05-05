@@ -96,14 +96,31 @@ class App extends Component {
         : null,
     };
 
+    // Gets height for PanelsColumn
+    // FeedColumn calculates height using autosizer
+    const contentHeight = options.ui.showHeader ? '91vh' : '100vh';
+
+    // Get width for logo
+    const logoWidth = options.ui.showHeader ? '100vw' : '100%';
+
     return (
       <OptionsContext.Provider value={optionsContextValue}>
         <FeedDataContext.Provider value={feedDataContextValue}>
-          <Header isShown={options.ui.showHeader} />
           <Container fluid className="appContainer">
             <Row>
-              {options.ui.leftPanel ? <PanelsColumn /> : <FeedColumn />}
-              {options.ui.leftPanel ? <FeedColumn /> : <PanelsColumn />}
+              <Header width={logoWidth} isShown={options.ui.showHeader} />
+            </Row>
+            <Row>
+              {options.ui.leftPanel ? (
+                <PanelsColumn height={contentHeight} />
+              ) : (
+                <FeedColumn />
+              )}
+              {options.ui.leftPanel ? (
+                <FeedColumn />
+              ) : (
+                <PanelsColumn height={contentHeight} />
+              )}
             </Row>
           </Container>
           <SuggestedFeedsModal

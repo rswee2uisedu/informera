@@ -8,12 +8,12 @@ import HeaderSide from './HeaderSide';
 import Options from './Options';
 import ManageFeeds from './ManageFeeds';
 
-const PanelsColumn = () => {
+const PanelsColumn = props => {
   const style = {
     display: 'block',
     width: '20em',
-    height: '100vh',
-    maxHeight: '100vh',
+    height: props.height,
+    maxHeight: props.height,
     overflowY: 'auto',
   };
 
