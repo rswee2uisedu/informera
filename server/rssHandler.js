@@ -1,3 +1,7 @@
+/**
+ * Handler for RSS requests
+ */
+
 const Parser = require('rss-parser');
 const parser = new Parser();
 

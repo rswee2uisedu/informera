@@ -1,3 +1,7 @@
+/**
+ * Main server process - listens for HTTP requests and routes them to the correct handler.
+ */
+
 const url = require('url');
 const querystring = require('query-string');
 const rssHandler = require('./rssHandler');

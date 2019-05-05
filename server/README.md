@@ -3,14 +3,18 @@
 ### `npm start`
 
 Starts the proxy server.<br>
-Proxy server listens on specified port and pulls rss data when requested by the client app.<br>
-Specify the port in the file server.js, line 3: <br>
+Proxy server listens on port provided by Azure, or falls back to specified port for local development.<br>
+Specify the port in the file server.js, line 9: <br>
 ```javascript
-const port = 3001;
+const port = process.env.PORT || 3001;
 ```
 
-If using a different port, be sure to update the url value in client/src/services/FeedDataService.js as well<br>
+If using a different port, be sure to update the RSSProxyAddress value in client/src/config.js as well<br>
 
 ```javascript
-const PROXY_URL = Config.RSSProxyAddress || 'http://localhost:3001?rss=';
+const Config = {
+  RSSProxyAddress: 'https://informera-proxy.azurewebsites.net?rss=',
+  MaxSuggestedPanelFeeds: 5,
+  MaxRemovePanelFeeds: 5,
+};
 ```
